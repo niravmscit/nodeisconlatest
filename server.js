@@ -8,20 +8,21 @@ var https= require('https');
 var request = require("https");
 var fs=require('fs');
 // configuration for OpenSSL to run url on HTTPS. 
-var serverOptions = {
+/*var serverOptions = {
   key: fs.readFileSync( './ssldata/localhost.key' ),
   cert: fs.readFileSync( './ssldata/localhost.cert' ),
   requestCert: false,
   rejectUnauthorized: false
-};
+};*/
 // initiate App with express module.
 var app=express();
 //app.set('port',9055);
 // set all configuration related to url enconding and Create server to serve https request. 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
-var server = https.createServer( serverOptions, app );
-var port = process.env.PORT || 443;
+//var server = https.createServer( serverOptions, app );
+var server = https.createServer(app);
+var port = process.env.PORT || 8080;
 
 // API KEY for elvanto Website
 var strAPIKey="5hGcHpRQWjMLzN08jZlnWXEek3jwIHmz"; 
